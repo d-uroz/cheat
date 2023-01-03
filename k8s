@@ -29,6 +29,7 @@ k get po -o wide
 k describe po [podname]
 k get po [podname] -o yaml > file.yml
 
+k run nginx --image=nginx --dry-run -o yaml > dry-run.yaml
 k run [podname] --image=busybox -- /bin/sh -c "sleep 3600"
 k create -f [filename.yml] 
 k apply -f [filename.yml]
