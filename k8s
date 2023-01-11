@@ -50,3 +50,26 @@ k8s will schedule the pod creation in node with label diskType:superfast
 
 k create deploy [name] --image=[imagename]
 k delete deploy [name]
+
+# Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace
+k cp /tmp/foo <some-namespace>/<some-pod>:/tmp/bar
+
+#Copy /tmp/foo from a remote pod to /tmp/bar locally
+k cp <some-namespace>/<some-pod>:/tmp/foo /tmp/bar
+
+# create
+k create -f deployment.yml
+
+# get
+k get deployments
+
+# update
+k apply -f deployment.yaml
+k set image deployment/my_deployment nginx=nginx:1.9.1
+
+# status
+k rollout status deployment/my_deployment
+k rollout history deployment/my_deployment
+
+# rollback
+k rollout undo deployment/my_deployment
